@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Member</title>
+</head>
+<body>
+<div id="member-table-container">
+<table id="member-table">
+<thead>
+<tr>
+<th>memberId</th>
+<th>First name</th>
+<th>Last Name</th>
+<th>Date Of birth</th>
+<th>image</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</div>
+<script>
+const tablebody = document.querySelector("#member-table tbody");
+let members = JSON.parse(localStorage.getItem("members")) || [
+{
+"id": "M001",
+"firstName": "John",
+"lastName": "Doe",
+"dateOfBirth": "1990-05-15",
+"image": "member1.jpg"
+},
+{
+"id": "M002",
+"firstName": "Jane",
+"lastName": "Smith",
+"dateOfBirth": "1985-08-22",
+"image": "member2.jpg"
+},
+{
+"id": "M003",
+"firstName": "Michael",
+"lastName": "Johnson",
+"dateOfBirth": "1992-11-30",
+"image": "member3.jpg"
+},
+{
+"id": "M004",
+"firstName": "Emily",
+"lastName": "Williams",
+"dateOfBirth": "1995-04-10",
+"image": "member4.jpg"
+},
+{
+"id": "M005",
+"firstName": "Nelson",
+"lastName": "Mandella",
+"dateOfBirth": "1965-04-17",
+"image": "member5.jpg"
+}
+];
+members.forEach(member => {
+let memberRow = document.createElement('tr');
+memberRow.innerHTML = `
+<td>${member.id}</td>
+<td>${member.firstName}</td>
+<td>${member.lastName}</td>
+<td>${member.dateOfBirth}</td>
+<td><img src=${member.image} width=100px></td>
+`
+tablebody.appendChild(memberRow);
+});
+localStorage.setItem("members",JSON.stringify(members));
+</script>
+</body>
+</html

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Training Program</title>
+<style>
+#Grid-container{
+display: flex;
+justify-content: space-around;
+grid-template-columns: repeat(1, minmax(100px,150px));
+}
+.card{
+width: 400px;
+
+border: 2px solid rgb(13, 13, 14);
+text-align: center;
+margin-bottom: 20px;
+}
+</style>
+</head>
+<body>
+<div id="Grid-container">
+</div>
+<script>
+const gridContainer = document.getElementById("Grid-container");
+let programs = JSON.parse(localStorage.getItem("programs")) || [
+{
+"programId": "P001",
+"programName": "Weight Training",
+"fees": "$100",
+"duration": "4 weeks",
+"description": "A comprehensive weight training program designed to build muscle and increase strength. Includes personalized workout plans and guidance.",
+"image": "img1.jpg"
+},
+{
+"programId": "P002",
+"programName": "Aerobics",
+"fees": "$80",
+"duration": "6 weeks",
+"description": "A high-energy aerobic exercise program to improve cardiovascular fitness and endurance. Includes group classes and expert instruction.",
+"image": "img2.jpg"
+},
+{
+"programId": "P003",
+"programName": "Yoga",
+"fees": "$90",
+"duration": "8 weeks",
+"description": "A holistic yoga program focusing on flexibility, balance, and relaxation. Includes various yoga styles and personalized instruction.",
+"image": "img3.jpg"
+},
+{
+"programId": "P004",
+"programName": "High-Intensity Interval Training (HIIT)",
+"fees": "$110",
+"duration": "5 weeks",
+"description": "An intense HIIT program designed to maximize calorie burn and improve overall fitness. Includes challenging workouts and recovery sessions.",
+"image": "img4.jpg"
+}
+];
+programs.forEach(program => {
+let grid = document.createElement('div');
+grid.innerHTML = `
+<h3>${program.programId}</h3>
+<h3>${program.programName}</h3>
+<p>${program.fees}</p>
+<h3>${program.duration}</h3>
+<h3>${program.description}</h3>
+<p><img src=${program.image} width=200px></p>
+`
+grid.className="card";
+gridContainer.appendChild(grid);
+});
+localStorage.setItem("programs", JSON.stringify(programs));
+</script>
+</body>
+</html
